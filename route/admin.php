@@ -11,7 +11,7 @@ $action = $_GET['action'] ?? 'index';
 
 // $action = $_GET['action'] ?? 'index';
 
-$genre = new GenreController();
+$genre = new AdminGenreController();
 
 // Routes for admin panel
 
@@ -35,5 +35,5 @@ switch ($page){
 }
 
        
-    //     if($_POST) $genre->create();
+        // if($_POST) $genre->create();
     // }

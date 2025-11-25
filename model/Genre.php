@@ -70,7 +70,7 @@ class Genre{
             else {
                 throw new \Exception($stmt->error);
             }
-            return false;
+            // return false;
         }
         catch(\Exception $e){
             echo $e->getMessage();
