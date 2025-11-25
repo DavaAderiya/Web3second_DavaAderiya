@@ -4,23 +4,23 @@
       <div class="footer-teks">
         <h4>Shop By Collection</h4>
         <ul>
-          <li><a href="page/men.php">Men</a></li>
-          <li><a href="ladies.php">Ladies</a></li>
-          <li><a href="kids.php">Kids</a></li>
-          <li><a href="collab.php">COLLAB</a></li>
+          <li><a href="index.php?page=men">Men</a></li>
+          <li><a href="index.php?page=ladies">Ladies</a></li>
+          <li><a href="index.php?page=kids">Kids</a></li>
+          <li><a href="index.php?page=collab">COLLAB</a></li>
         </ul>
       </div>
 
       <div class="footer-teks">
         <h4>Brand Produk</h4>
         <ul>
-          <li><a href="3s.php">3Second</a></li>
-          <li><a href="gt.php">Greenlight</a></li>
-          <li><a href="mt.php">Moutley</a></li>
-          <li><a href="t2.php">Three2nd</a></li>
-          <li><a href="men.php">3Second Men</a></li>
-          <li><a href="ladies.php">3Second Ladies</a></li>
-          <li><a href="kids.php">3Second Kids</a></li>
+          <li><a href="index.php?page=3s">3Second</a></li>
+          <li><a href="index.php?page=gt">Greenlight</a></li>
+          <li><a href="index.php?page=mt">Moutley</a></li>
+          <li><a href="index.php?page=t2">Three2nd</a></li>
+          <li><a href="index.php?page=men">3Second Men</a></li>
+          <li><a href="index.php?page=ladies">3Second Ladies</a></li>
+          <li><a href="index.php?page=kids">3Second Kids</a></li>
         </ul>
       </div>
 
@@ -35,6 +35,7 @@
           <li><a href="">Blog</a></li>
           <li><a href="">Career</a></li>
           <li><a href="">Policy</a></li>
+          <li><a href="http://localhost/3Second/page/admin/index.php?page=dashboard">Dashboard</a></li>
         </ul>
       </div>
 

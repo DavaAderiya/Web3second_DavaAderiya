@@ -7,27 +7,33 @@ require_once('../../controller/controllers.php');
 
 
 $page = $_GET['page'] ?? 'dashboard';
+$action = $_GET['action'] ?? 'index';
 
 // $action = $_GET['action'] ?? 'index';
-// $genre = new AdminGenreController();
+
+$genre = new GenreController();
 
 // Routes for admin panel
 
 switch ($page){
     case 'dashboard' : include "page/dashboard.php"; break;
-    case 'genre' : include "page/form,php"; break;
-    
-    // case 'genre' : {  
-    //     switch ($action) {
-    //         case 'delete' : 
-    //             $genre->delete($_GET['id']); break;
-    //         case 'edit' : 
-    //             $genre->edit($_GET['id']);
-    //             break;
-    //     }  
-    //     $genre->index();
-    //     $genre->read_all();   
-      
+    // case 'genre' : include "page/input_genre.php"; break; 
+    case 'genre' : { 
+        switch ($action) {
+            case 'index' : 
+                $genre->index();
+                break;
+            case 'create' : 
+                $genre->create();
+                    if(isset($_POST['submit']))
+                       {
+                           $genre->store();
+                       }
+                break;
+        }
+    } break;
+}
+
        
-        // if($_POST) $genre->create();
-    }
+    //     if($_POST) $genre->create();
+    // }

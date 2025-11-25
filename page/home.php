@@ -9,17 +9,17 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <a href="showall.html">
+        <a href="index.php?page=shopall">
           <img src="img/new.jpg" class="d-block w-100" alt="...">
         </a>
       </div>
       <div class="carousel-item">
-        <a href="gt.html">
+        <a href="index.php?page=gt">
           <img src="img/lp.jpeg" class="d-block w-100" alt="...">
           <a>
       </div>
       <div class="carousel-item">
-        <a href="3s.html">
+        <a href="index.php?page=3s">
           <img src="img/lp1.jpeg" class="d-block w-100" alt="...">
         </a>
       </div>
@@ -45,7 +45,7 @@
       mendapatkan 1000 poin, 1000 poin = Rp.1000 yang dapat digunakan langsung untuk transaksi berikutnya.</p> -->
     <div class="featured-jarak">
       <div class="featured-container">
-        <a href="showall.html">
+        <a href="index.php?page=shopall">
           <img src="img/featured-main.webp" alt="" class="featured-img" />
         </a>
       </div>

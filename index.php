@@ -7,8 +7,7 @@ include "komponen/header.php";
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
    <?php
    include "komponen/navbar.php";
-
-
+      
 
    // konten
    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
