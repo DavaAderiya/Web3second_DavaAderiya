@@ -1,4 +1,4 @@
-<?php
+ <?php
 class GenreController{
     private $db;
     private $genre;
@@ -21,7 +21,7 @@ class GenreController{
 
             $genres = $result->fetch_all(MYSQLI_ASSOC);
 
-            include "page/genre_all.php";
+            include "page/view_genre.php";
         }
         catch(\Exception $e){
             echo $e->getMessage();
@@ -30,4 +30,4 @@ class GenreController{
         
     }
 
-}
+} 

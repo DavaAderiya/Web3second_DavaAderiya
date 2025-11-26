@@ -10,10 +10,10 @@
                                 foreach($genres as $genre){
                             ?>
                                 <tr>
-                                    <td><?= $genre['id'] ?></td>
-                                    <td><?= $genre['nama'] ?></td>
-									<td><a href="?page=genre&action=edit&id=<?= $genre['id'] ?>">Edit</a></td>
-									<td><a href="?page=genre&action=delete&id=<?= $genre['id'] ?>">Hapus</a></td>
+                                    <td><?= $genre['id_genre'] ?></td>
+                                    <td><?= $genre['nama_genre'] ?></td>
+									<td><a href="?page=genre&action=edit&id=<?= $genre['id_genre'] ?>">Edit</a></td>
+									<td><a href="?page=genre&action=delete&id=<?= $genre['id_genre'] ?>">Hapus</a></td>
                                 </tr>
                             <?php }
                             } else { ?>

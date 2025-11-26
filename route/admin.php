@@ -36,4 +36,5 @@ switch ($page){
 
        
         // if($_POST) $genre->create();
-    // }
+    // } 
+   
