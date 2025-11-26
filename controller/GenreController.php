@@ -1,4 +1,4 @@
- <?php
+<?php
 class GenreController{
     private $db;
     private $genre;
@@ -30,4 +30,4 @@ class GenreController{
         
     }
 
-} 
+}
