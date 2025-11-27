@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- [Head] start -->
@@ -405,3 +406,4 @@
 <!-- [Body] end -->
 
 </html>
+<?php ob_end_flush(); ?>

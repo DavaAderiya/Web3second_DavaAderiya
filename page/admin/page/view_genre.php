@@ -1,25 +1,35 @@
-<div class="row">
-    <table class="table table-hover table-border mb-0">
+<h2>Data Genre</h2>
+
+<a href="index.php?page=genre&action=create" class="btn btn-success mb-3">Tambah Genre</a>
+
+<table class="table table-bordered">
+    <thead>
         <tr>
-            <td>No</td>
-            <td>Nama</td>
-            <td>Action</td>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nama Genre</th>
+            <th>Aksi</th>
         </tr>
-         <?php
-                            if(isset($genres)){
-                                foreach($genres as $genre){
-                            ?>
-                                <tr>
-                                    <td><?= $genre['id_genre'] ?></td>
-                                    <td><?= $genre['nama_genre'] ?></td>
-									<td><a href="?page=genre&action=edit&id=<?= $genre['id_genre'] ?>">Edit</a></td>
-									<td><a href="?page=genre&action=delete&id=<?= $genre['id_genre'] ?>">Hapus</a></td>
-                                </tr>
-                            <?php }
-                            } else { ?>
-                                <tr>
-                                    <td class="text-center" colspan="2">Data Kosong</td>
-                                </tr>
-                            <?php } ?>
-    </table>
-</div>
+    </thead>
+
+    <tbody>
+        <?php 
+        $no = 1;
+        while ($row = $result->fetch_assoc()): ?>
+        <tr>
+            <td><?= $no++ ?></td>
+            <td><?= $row['id_genre'] ?></td>
+            <td><?= $row['nama_genre'] ?></td>
+            <td>
+                <!-- ROUTE BENAR : pakai id= -->
+                <a href="index.php?page=genre&action=edit&id=<?= $row['id_genre'] ?>" 
+                   class="btn btn-warning btn-sm">Edit</a>
+
+                <a href="index.php?page=genre&action=delete&id=<?= $row['id_genre'] ?>" 
+                   onclick="return confirm('Yakin hapus?')" 
+                   class="btn btn-danger btn-sm">Hapus</a>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>

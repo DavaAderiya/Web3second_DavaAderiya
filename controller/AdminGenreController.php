@@ -1,47 +1,61 @@
-<?php 
+<?php
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../model/Genre.php';
+
 
 class AdminGenreController {
+
     private $db;
     private $genre;
 
-    public function __construct(){
-        $dbase = new Database();
-        $this->db = $dbase->getConnection();
+    public function __construct() {
+        $database = new Database();
+        $this->db = $database->getConnection();
         $this->genre = new Genre($this->db);
     }
 
     public function index() {
-        $stmt = $this->genre->read();
-        $result = $stmt->get_result();
-        $genres = $result->fetch_all(MYSQLI_ASSOC);
-
-        include "page/view_genre.php";
+        $result = $this->genre->read();
+        include __DIR__ . '/../page/admin/page/view_genre.php';
     }
 
     public function create() {
-        include "page/input_genre.php";
+        include __DIR__ . '/../page/admin/page/input_genre.php';
     }
 
     public function store() {
-        // echo "test";
-        
+        $nama = $_POST['nama_genre'];
 
-            $this->genre->nama = $_POST['nama'];
-            $this->genre->create();
-
-            // header("Location: index.php?page=genre");
+        if ($this->genre->create($nama)) {
+            header("Location: index.php?page=genre&action=index");
             exit;
-        // }
-    }
-
-    public function delete($id){
-        $this->genre->delete($id);
+        } else {
+            echo "Gagal menambah genre!";
+        }
     }
 
     public function edit($id) {
-        $stmt = $this->genre->read_one($id);
-        $result = $stmt->get_result();
-        $edit = $result->fetch_assoc();
-        // No need to include the form here, it's handled in index()
+        $data = $this->genre->getById($id);
+        include __DIR__ . '/../page/admin/page/input_genre.php';
+    }
+
+    public function update($id) {
+        $nama = $_POST['nama_genre'];
+
+        if ($this->genre->update($id, $nama)) {
+            header("Location: index.php?page=genre&action=index");
+            exit;
+        } else {
+            echo "Gagal update genre!";
+        }
+    }
+
+    public function delete($id) {
+        if ($this->genre->delete($id)) {
+            header("Location: index.php?page=genre&action=index");
+            exit;
+        } else {
+            echo "Gagal menghapus genre!";
+        }
     }
 }

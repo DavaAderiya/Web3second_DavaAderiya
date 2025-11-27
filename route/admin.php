@@ -1,39 +1,64 @@
 <?php
-// session_start();
-require_once('../../config/Database.php');
-require_once('../../model/models.php');
-require_once('../../controller/controllers.php');
 
+require_once __DIR__ . '/../controller/AdminGenreController.php';
 
+// Path folder page
+$basePagePath = __DIR__ . '/../page/admin/page/';
 
-$page = $_GET['page'] ?? 'dashboard';
-$action = $_GET['action'] ?? 'index';
+$controller = new AdminGenreController();
 
-// $action = $_GET['action'] ?? 'index';
+// GET Parameter
+$page   = $_GET['page']   ?? 'dashboard';
+$action = $_GET['action'] ?? '';
+$id     = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-$genre = new AdminGenreController();
+// ---------------- ROUTING ---------------- //
 
-// Routes for admin panel
+switch ($page) {
 
-switch ($page){
-    case 'dashboard' : include "page/dashboard.php"; break;
-    // case 'genre' : include "page/input_genre.php"; break; 
-    case 'genre' : { 
+    // ================= DASHBOARD =================
+    case 'dashboard':
+        include $basePagePath . 'dashboard.php';
+        break;
+
+    // ================= GENRE =================
+    case 'genre':
         switch ($action) {
-            case 'index' : 
-                $genre->index();
-                break;
-            case 'create' : 
-                $genre->create();
-                    if(isset($_POST['submit']))
-                       {
-                           $genre->store();
-                       }
-                break;
-        }
-    } break;
-}
 
-       
-        // if($_POST) $genre->create();
-    // }
+            case 'index':
+                $controller->index();
+                break;
+
+            case 'create':
+                $controller->create();
+                break;
+
+            case 'store':
+                $controller->store();
+                break;
+
+            case 'edit':
+                if ($id === null) die("ID genre tidak ditemukan (edit)");
+                $controller->edit($id);
+                break;
+
+            case 'update':
+                if ($id === null) die("ID genre tidak ditemukan (update)");
+                $controller->update($id);
+                break;
+
+            case 'delete':
+                if ($id === null) die("ID genre tidak ditemukan (delete)");
+                $controller->delete($id);
+                break;
+
+            default:
+                $controller->index();
+        }
+        break;
+
+    // ================= DEFAULT =================
+    default:
+        include $basePagePath . 'dashboard.php';
+        break;
+}

@@ -1,81 +1,37 @@
 <?php
-class Genre{
 
-    private $connection;
+class Genre {
+
+    private $conn;
     private $table = "tb_genre";
 
-    // public $id;
-    public $nama;
-
-    public function __construct($db){
-        $this->connection = $db;
+    public function __construct($db) {
+        $this->conn = $db;
     }
 
-    public function read(){
-        try {
-        $query = "SELECT * FROM ".$this->table;
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-
-        return $stmt;
-        }
-        catch(\Exception $e){
-            echo $e->getMessage();
-        }
+    public function read() {
+        $query = "SELECT * FROM " . $this->table;
+        return $this->conn->query($query);
     }
 
-    public function read_one($id){
-        try{
-            $query = "SELECT * FROM ".$this->table." WHERE id = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            return $stmt;
-        }
-        catch(\Exception $e){
-            echo $e->getMessage();
-        }
+    public function getById($id) {
+        $query = "SELECT * FROM " . $this->table . " WHERE id_genre = $id";
+        $result = $this->conn->query($query);
+        return $result->fetch_assoc();
     }
 
-    public function create(){
-        try{
-            $query = "INSERT INTO ".$this->table." (nama_genre) VALUES (?)";
-            $stmt = $this->connection->prepare($query);
-
-            $this->nama = htmlspecialchars(strip_tags($this->nama));
-            
-            $stmt->bind_param("s", $this->nama);
-            if ($stmt->execute())
-                return true;
-            return false;
-        }
-        catch (\Exception $e){
-            echo $e->getMessage();
-            return false;
-        }
+    public function create($nama) {
+        $query = "INSERT INTO " . $this->table . " (nama_genre) VALUES ('$nama')";
+        return $this->conn->query($query);
     }
 
-    public function update(){
-        
+    public function update($id, $nama) {
+        $query = "UPDATE " . $this->table . " SET nama='$nama' WHERE id_genre=$id";
+        return $this->conn->query($query);
     }
 
-    public function delete($id)
-    {
-        try{
-            $query = "DELETE FROM ".$this->table." WHERE id = ?";
-            $stmt = $this->connection->prepare($query);
-            $stmt->bind_param("i", $id);
-            if ($stmt->execute())
-                return true;
-            else {
-                throw new \Exception($stmt->error);
-            }
-        }
-        catch(\Exception $e){
-            echo $e->getMessage();
-        }
+    public function delete($id) {
+        $query = "DELETE FROM " . $this->table . " WHERE id_genre=$id";
+        return $this->conn->query($query);
     }
-
-
-
 }
